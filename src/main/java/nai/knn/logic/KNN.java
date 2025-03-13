@@ -1,13 +1,16 @@
-package nai.knn;
+package nai.knn.logic;
+
+import nai.knn.models.Distance;
+import nai.knn.models.Vector;
 
 import java.util.*;
 import java.util.stream.Collectors;
 
 public class KNN {
-    public static List<Distance> calculate_distances(List<Vector> training_vectors, Vector test_vector){
+    public static List<Distance> calculate_distances(List<nai.knn.models.Vector> training_vectors, nai.knn.models.Vector test_vector){
         List<Distance> distances = new ArrayList<>();
 
-        for (Vector training_vector : training_vectors) {
+        for (nai.knn.models.Vector training_vector : training_vectors) {
             double distance = 0;
 
             for (int j = 0; j < training_vector.getValues().size(); j++) {
@@ -45,5 +48,21 @@ public class KNN {
         return mostFrequentNames.isEmpty()
                 ? null
                 : mostFrequentNames.get(new Random().nextInt(mostFrequentNames.size()));
+    }
+
+    public static double calculateAccuracy(List<nai.knn.models.Vector> trainingVectors, List<Vector> testVectors, int k) {
+        int correctPredictions = 0;
+
+        for (var testVector : testVectors) {
+            List<Distance> distances = KNN.calculate_distances(trainingVectors, testVector);
+            distances = KNN.k_nearest_neighbors(k, distances);
+            String prediction = KNN.predict(distances);
+
+            if (prediction.equals(testVector.getName())) {
+                correctPredictions++;
+            }
+        }
+
+        return (double) correctPredictions / testVectors.size();
     }
 }

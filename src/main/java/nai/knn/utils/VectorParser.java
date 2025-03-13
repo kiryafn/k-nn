@@ -1,6 +1,6 @@
-package nai.knn;
+package nai.knn.utils;
 
-import nai.knn.Vector;
+import nai.knn.models.Vector;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

@@ -1,4 +1,4 @@
-package nai.knn;
+package nai.knn.models;
 
 import java.util.List;
 
