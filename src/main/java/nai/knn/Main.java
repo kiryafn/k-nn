@@ -36,7 +36,7 @@ public class Main {
                 "Accuracy vs k",
                 "k (Number of Neighbors)",
                 "Accuracy of correct predictions",
-                "Accuracy1",
+                "Accuracy",
                 kValues,
                 accuracyValues
         );

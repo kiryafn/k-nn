@@ -62,7 +62,8 @@ public class KNN {
                 correctPredictions++;
             }
 
-            System.out.println("[Prediction: " + prediction + "]" + " [Actual: " + testVector.getName() + "]");
+            System.out.println("k = " + k + ": [Prediction: " + prediction + "]" + " [Actual: " + testVector.getName() + "]");
+            System.out.println("k = " + k + ": Correct predictions: " + correctPredictions + "/" + testVectors.size());
         }
 
         return (double) correctPredictions / testVectors.size();
