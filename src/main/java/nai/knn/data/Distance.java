@@ -1,4 +1,4 @@
-package nai.knn.models;
+package nai.knn.data;
 
 public class Distance {
     private final Vector trainingVector;

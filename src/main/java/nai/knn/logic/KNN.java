@@ -1,16 +1,16 @@
 package nai.knn.logic;
 
-import nai.knn.models.Distance;
-import nai.knn.models.Vector;
+import nai.knn.data.Distance;
+import nai.knn.data.Vector;
 
 import java.util.*;
 import java.util.stream.Collectors;
 
 public class KNN {
-    public static List<Distance> calculate_distances(List<nai.knn.models.Vector> training_vectors, nai.knn.models.Vector test_vector){
+    public static List<Distance> calculate_distances(List<Vector> training_vectors, Vector test_vector){
         List<Distance> distances = new ArrayList<>();
 
-        for (nai.knn.models.Vector training_vector : training_vectors) {
+        for (Vector training_vector : training_vectors) {
             double distance = 0;
 
             for (int j = 0; j < training_vector.getValues().size(); j++) {
@@ -50,7 +50,7 @@ public class KNN {
                 : mostFrequentNames.get(new Random().nextInt(mostFrequentNames.size()));
     }
 
-    public static double calculateAccuracy(List<nai.knn.models.Vector> trainingVectors, List<Vector> testVectors, int k) {
+    public static double calculate_accuracy(List<Vector> trainingVectors, List<Vector> testVectors, int k) {
         int correctPredictions = 0;
 
         for (var testVector : testVectors) {
@@ -61,6 +61,8 @@ public class KNN {
             if (prediction.equals(testVector.getName())) {
                 correctPredictions++;
             }
+
+            System.out.println("[Prediction: " + prediction + "]" + " [Actual: " + testVector.getName() + "]");
         }
 
         return (double) correctPredictions / testVectors.size();

@@ -1,4 +1,4 @@
-package nai.knn.config;
+package nai.knn.data;
 
 public enum Path {
     Training_Vectors("src/main/resources/iris.data"),
